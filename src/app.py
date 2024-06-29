@@ -26,11 +26,11 @@ from PIL import Image
 
 #%%Back End--------------------------------------------------------------------------------------------------------------------
 #Import Data Frame
-Datos = pd.read_csv('Datos.csv')
+Datos = pd.read_csv('src/Datos.csv')
 
 #%%Detection Image---------------------------------------------------------------------------------------------------------------
 #Strating image
-pil_image = Image.open("Predictions/image-0001.jpg")
+pil_image = Image.open("src/Predictions/image-0001.jpg")
 #%%Map--------------------------------------------------------------------------------------------------------------------------
 #Base Layer
 
@@ -202,15 +202,15 @@ fluid=True)
               )
 
 def imn_ret(*title):
-    pil_image = Image.open("Predictions/image-0001.jpg")
+    pil_image = Image.open("src/Predictions/image-0001.jpg")
     marker_id = dash.callback_context.triggered[0]['prop_id'].split(".")[0]
     if any(marker_id):
         Imagen = Datos['Image'][int(marker_id)]
-        pil_image = Image.open(f"Predictions/{Imagen}")
+        pil_image = Image.open(f"src/Predictions/{Imagen}")
     return pil_image
 
 
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=8080)
 # %%
